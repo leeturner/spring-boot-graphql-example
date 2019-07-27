@@ -5,7 +5,9 @@ import com.leeturner.graphql.invoices.model.Client;
 import com.leeturner.graphql.invoices.model.Invoice;
 import com.leeturner.graphql.invoices.repository.ClientRepository;
 import com.leeturner.graphql.invoices.repository.InvoiceRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Query implements GraphQLQueryResolver {
 
     private InvoiceRepository invoiceRepository;
