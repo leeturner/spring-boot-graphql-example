@@ -1,0 +1,12 @@
+type Invoice {
+    id: ID!
+    client: Client!
+    status: String!
+    issuesDate: String
+    currency: String!
+}
+
+extend type Query {
+    findAllInvoices: [Invoice]!
+    countInvoices: Int
+}
