@@ -2,7 +2,7 @@ type Invoice {
     id: ID!
     client: Client!
     status: String!
-    issuesDate: String
+    issuedDate: String
     currency: String!
 }
 
