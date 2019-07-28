@@ -22,7 +22,7 @@ public class InvoicesApplication {
             Client client = new Client("Bobs Marketing Agency", 28, "23 Brighton Street", "Rottingdean", "Brighton", "BN2 7DP");
             clientRepository.save(client);
 
-            Invoice invoice = new Invoice("DRAFT", null, "GBP", client);
+            Invoice invoice = new Invoice("DRAFT", null, "GBP", 120.00, 100.00, 20.00, client);
             invoiceRepository.save(invoice);
         };
     }
