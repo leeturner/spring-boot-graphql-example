@@ -22,6 +22,10 @@ public class Query implements GraphQLQueryResolver {
         return this.invoiceRepository.findAll();
     }
 
+    public Iterable<Invoice> findInvoicesByStatus(String status) {
+        return this.invoiceRepository.findByStatus(status);
+    }
+
     public long countInvoices() {
         return this.invoiceRepository.count();
     }
