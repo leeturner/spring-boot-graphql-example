@@ -23,22 +23,29 @@ public class Invoice {
 
     private String currency;
 
+    private Double gross;
+
+    private Double net;
+
+    private Double vat;
+
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false, updatable = false)
     private Client client;
 
-    public Invoice() {
-
-    }
+    public Invoice() { }
 
     public Invoice(Long id) {
         this.id = id;
     }
 
-    public Invoice(String status, String issuedDate, String currency, Client client) {
+    public Invoice(String status, String issuedDate, String currency, Double gross, Double net, Double vat, Client client) {
         this.status = status;
         this.issuedDate = issuedDate;
         this.currency = currency;
+        this.gross = gross;
+        this.net = net;
+        this.vat = vat;
         this.client = client;
     }
 
