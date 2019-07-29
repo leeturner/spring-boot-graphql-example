@@ -300,3 +300,9 @@ If you want a more interactive experience then GraphiQL has been enabled via add
     
 GraphiQL is an in-browser IDE for exploring GraphQL:
 
+![GraphiQL in-browser IDE](docs/images/GraphiQL.png)
+
+The GraphiQL IDE can be accessed at the following URL:
+
+    http://localhost:8080/graphiql
+
