@@ -114,7 +114,7 @@ Result:
        }
     } 
 
-You will notice that the above query does not contain all the parameters managed by the `Client` entity.  We can return more or less data in the response by added more fields to the query:
+You will notice that the above query does not contain all the data managed by the `Client` entity.  We can return more or less data in the response by changing the fields in the query:
 
 Query:
 
@@ -146,3 +146,99 @@ Result:
         ]
       }
     } 
+    
+The same applies for the `findAllInvoices` query although this one is a little more interesting given its relationship to the `Client` entity.  Using GraphQL we can traverse the object graph and return the `Client` data along with the invoice:
+
+Query:
+
+    {findAllInvoices{id status gross net vat client{id name}}}
+
+Result:
+
+    {
+      "data": {
+        "findAllInvoices": [
+          {
+            "id": "3",
+            "status": "DRAFT",
+            "gross": 120,
+            "net": 100,
+            "vat": 20,
+            "client": {
+              "id": "1",
+              "name": "Bobs Marketing Agency"
+            }
+          },
+          {
+            "id": "4",
+            "status": "ISSUED",
+            "gross": 1200,
+            "net": 1000,
+            "vat": 200,
+            "client": {
+              "id": "1",
+              "name": "Bobs Marketing Agency"
+            }
+          },
+          {
+            "id": "5",
+            "status": "DRAFT",
+            "gross": 120,
+            "net": 100,
+            "vat": 20,
+            "client": {
+              "id": "2",
+              "name": "Jills Accountancy Company"
+            }
+          }
+        ]
+      }
+    } 
+
+As before we can return more or less data across both entities in the same `Query`:
+
+Query:
+
+    {findAllInvoices{id status client{id name addressLine1 city postCode}}}
+
+Result:
+
+    {
+      "data": {
+        "findAllInvoices": [
+          {
+            "id": "3",
+            "status": "DRAFT",
+            "client": {
+              "id": "1",
+              "name": "Bobs Marketing Agency",
+              "addressLine1": "23 Brighton Street",
+              "city": "Brighton",
+              "postCode": "BN2 7DP"
+            }
+          },
+          {
+            "id": "4",
+            "status": "ISSUED",
+            "client": {
+              "id": "1",
+              "name": "Bobs Marketing Agency",
+              "addressLine1": "23 Brighton Street",
+              "city": "Brighton",
+              "postCode": "BN2 7DP"
+            }
+          },
+          {
+            "id": "5",
+            "status": "DRAFT",
+            "client": {
+              "id": "2",
+              "name": "Jills Accountancy Company",
+              "addressLine1": "24 Eastbourne Rd",
+              "city": "Eastboaurne",
+              "postCode": "BN23 5GP"
+            }
+          }
+        ]
+      }
+    }
