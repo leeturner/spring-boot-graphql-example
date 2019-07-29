@@ -13,6 +13,13 @@ The H2 console has been enabled to enabled vi adding these properties in the `ap
 
 The console can be accessed via this url - [http://localhost:8080/h2-console/login.jsp](http://localhost:8080/h2-console/login.jsp)
 
+Once running you can authenticate against the in-memory database using the following credentials:
+
+* Driver Class: *org.h2.Driver*
+* JDBC URL: *jdbc:h2:mem:testdb*
+* User Name: *sa*
+* Password: [leave blank]
+
 ## GraphQL
 
 GraphQL is enabled via adding the starter dependency from `com.graphql-java-kickstart`:
