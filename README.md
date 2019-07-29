@@ -309,7 +309,6 @@ GraphiQL is an in-browser IDE for exploring GraphQL:
 
 ![GraphiQL in-browser IDE](docs/images/GraphiQL.png)
 
-The GraphiQL IDE can be accessed at the following URL:
+The GraphiQL IDE can be accessed at the following URL - [http://localhost:8080/graphiql](http://localhost:8080/graphiql)
 
-    http://localhost:8080/graphiql
 
