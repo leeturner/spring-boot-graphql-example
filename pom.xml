@@ -11,9 +11,9 @@
   </parent>
 
   <groupId>com.leeturner.graphql</groupId>
-  <artifactId>invoices</artifactId>
+  <artifactId>spring-boot-graphql-example</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>invoices</name>
+  <name>spring-boot-graphql-example</name>
   <description>Demo Spring Boot project created to have a play around with Graphql</description>
 
   <properties>
