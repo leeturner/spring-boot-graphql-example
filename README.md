@@ -4,9 +4,9 @@ This is a little Spring Boot REST application exposing a GraphQL interface desig
 
 ## H2 Database
 
-This app used the H2 in-memory database and JPA to expose 2 simple entities - an `Invoice` and a `Client`.  In this example, a `Client` can have multiple `Invoice`'s issued to them.  This is mapped by the JPA `@ManyToOne` annotation.
+This app uses the H2 in-memory database and JPA to expose 2 simple entities - an `Invoice` and a `Client`.  In this example, a `Client` can have multiple `Invoice`'s issued to them.  This is mapped by the JPA `@ManyToOne` annotation.
 
-The H2 console has been enabled to enabled vi adding these properties in the `application.properties` file:
+The H2 console has been enabled via adding these properties in the `application.properties` file:
 
     spring.h2.console.enabled = true
     spring.h2.console.path = /h2-console
