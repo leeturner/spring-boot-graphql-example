@@ -242,3 +242,61 @@ Result:
         ]
       }
     }
+
+Queries that require additional data such as the `findInvoicesByStatus` query can be passed as parameters:
+
+Query:
+
+    {findInvoicesByStatus(status: "DRAFT"){id status client{id name addressLine1 city postCode}}}
+
+Result:
+
+    {
+      "data": {
+        "findInvoicesByStatus": [
+          {
+            "id": "3",
+            "status": "DRAFT",
+            "client": {
+              "id": "1",
+              "name": "Bobs Marketing Agency",
+              "addressLine1": "23 Brighton Street",
+              "city": "Brighton",
+              "postCode": "BN2 7DP"
+            }
+          },
+          {
+            "id": "5",
+            "status": "DRAFT",
+            "client": {
+              "id": "2",
+              "name": "Jills Accountancy Company",
+              "addressLine1": "24 Eastbourne Rd",
+              "city": "Eastboaurne",
+              "postCode": "BN23 5GP"
+            }
+          }
+        ]
+      }
+    }
+
+All of the above queries can be sent to the service via the url.  They need to be URLEncoded for them to work properly.  For example:
+
+    http://localhost:8080/graphql?query=%7BcountClients%7D
+    http://localhost:8080/graphql?query=%7BfindAllClients%7Bid%20name%20paymentTerms%7D%7D
+    http://localhost:8080/graphql?query=%7BfindAllInvoices%7Bid%20status%20client%7Bid%20name%20addressLine1%20city%20postCode%7D%7D%7D
+    http://localhost:8080/graphql?query=%7BfindInvoicesByStatus(status%3A%20%22DRAFT%22)%7Bid%20status%20client%7Bid%20name%20addressLine1%20city%20postCode%7D%7D%7D
+    
+### GraphiQL
+
+If you want a more interactive experience then GraphiQL has been enabled via adding the following dependency to the service:
+
+    <dependency>
+      <groupId>com.graphql-java-kickstart</groupId>
+      <artifactId>graphiql-spring-boot-starter</artifactId>
+      <version>5.10.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    
+GraphiQL is an in-browser IDE for exploring GraphQL:
+
