@@ -15,9 +15,9 @@ The console can be accessed via this url - [http://localhost:8080/h2-console/log
 
 Once running you can authenticate against the in-memory database using the following credentials:
 
-* Driver Class: *org.h2.Driver*
-* JDBC URL: *jdbc:h2:mem:testdb*
-* User Name: *sa*
+* Driver Class: **org.h2.Driver**
+* JDBC URL: **jdbc:h2:mem:testdb**
+* User Name: **sa**
 * Password: [leave blank]
 
 ## GraphQL
