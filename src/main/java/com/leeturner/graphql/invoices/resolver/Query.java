@@ -1,5 +1,7 @@
 package com.leeturner.graphql.invoices.resolver;
 
+import java.util.Optional;
+
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.leeturner.graphql.invoices.model.Client;
 import com.leeturner.graphql.invoices.model.Invoice;
@@ -18,23 +20,31 @@ public class Query implements GraphQLQueryResolver {
         this.clientRepository = clientRepository;
     }
 
-    public Iterable<Invoice> findAllInvoices() {
+    public Optional<Invoice> invoice(Long id) {
+        return this.invoiceRepository.findById(id);
+    }
+
+    public Iterable<Invoice> invoices() {
         return this.invoiceRepository.findAll();
     }
 
-    public Iterable<Invoice> findInvoicesByStatus(String status) {
+    public Iterable<Invoice> invoicesByStatus(String status) {
         return this.invoiceRepository.findByStatus(status);
     }
 
-    public long countInvoices() {
+    public long invoiceCount() {
         return this.invoiceRepository.count();
     }
 
-    public Iterable<Client> findAllClients() {
+    public Optional<Client> client(Long id) {
+        return this.clientRepository.findById(id);
+    }
+
+    public Iterable<Client> clients() {
         return this.clientRepository.findAll();
     }
 
-    public long countClients() {
+    public long clientCount() {
         return this.clientRepository.count();
     }
 }

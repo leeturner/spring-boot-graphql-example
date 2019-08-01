@@ -9,6 +9,6 @@ type Client {
 }
 
 type Query {
-    findAllClients: [Client]!
-    countClients: Int
+    clients: [Client]!
+    clientCount: Int
 }

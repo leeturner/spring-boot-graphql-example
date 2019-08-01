@@ -10,7 +10,8 @@ type Invoice {
 }
 
 extend type Query {
-    findAllInvoices: [Invoice]!
-    findInvoicesByStatus(status: String): [Invoice]!
-    countInvoices: Int
+    invoices: [Invoice]
+    invoice(id: Int!): Invoice
+    invoicesByStatus(status: String): [Invoice]
+    invoiceCount: Int
 }

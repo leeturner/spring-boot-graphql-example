@@ -45,8 +45,9 @@ client.graphqls:
     }
 
     type Query {
-        findAllClients: [Client]!
-        countClients: Int
+        clients: [Client]
+        client(id: Int!): Client
+        clientCount: Int
     }
 
 invoice.graphqls:
@@ -63,9 +64,10 @@ invoice.graphqls:
     }
 
     extend type Query {
-        findAllInvoices: [Invoice]!
-        findInvoicesByStatus(status: String): [Invoice]!
-        countInvoices: Int
+        invoices: [Invoice]
+        invoice(id: Int!): Invoice
+        invoicesByStatus(status: String): [Invoice]
+        invoiceCount: Int
     }
 
 ## Usage
@@ -76,37 +78,37 @@ Once the service is up and running you can query the data using the queries defi
 
 Query:
 
-    {countInvoices}
+    {invoiceCount}
 
 Result:
 
     {
      "data": {
-       "countInvoices": 3
+       "invoiceCount": 3
      }
     } 
 
 Query:
 
-    {countClients}
+    {clientCount}
 
 Result:
 
     {
       "data": {
-        "countClients": 2
+        "clientCount": 2
       }
     } 
 
 Query:
 
-    {findAllClients{id name paymentTerms}}
+    {clients{id name paymentTerms}}
 
 Result:
 
     {
        "data": {
-         "findAllClients": [
+         "clients": [
            {
              "id": "1",
              "name": "Bobs Marketing Agency",
@@ -125,13 +127,13 @@ You will notice that the above query does not contain all the data managed by th
 
 Query:
 
-    {findAllClients{id name paymentTerms addressLine1 addressLine2 city postCode}}
+    {clients{id name paymentTerms addressLine1 addressLine2 city postCode}}
 
 Result:
 
     {
       "data": {
-        "findAllClients": [
+        "clients": [
           {
             "id": "1",
             "name": "Bobs Marketing Agency",
@@ -154,17 +156,17 @@ Result:
       }
     } 
     
-The same applies for the `findAllInvoices` query although this one is a little more interesting given its relationship to the `Client` entity.  Using GraphQL we can traverse the object graph and return the `Client` data along with the invoice:
+The same applies for the `invoices` query although this one is a little more interesting given its relationship to the `Client` entity.  Using GraphQL we can traverse the object graph and return the `Client` data along with the invoice:
 
 Query:
 
-    {findAllInvoices{id status gross net vat client{id name}}}
+    {invoices{id status gross net vat client{id name}}}
 
 Result:
 
     {
       "data": {
-        "findAllInvoices": [
+        "invoices": [
           {
             "id": "3",
             "status": "DRAFT",
@@ -206,13 +208,13 @@ As before we can return more or less data across both entities in the same `Quer
 
 Query:
 
-    {findAllInvoices{id status client{id name addressLine1 city postCode}}}
+    {invoices{id status client{id name addressLine1 city postCode}}}
 
 Result:
 
     {
       "data": {
-        "findAllInvoices": [
+        "invoices": [
           {
             "id": "3",
             "status": "DRAFT",
@@ -250,17 +252,17 @@ Result:
       }
     }
 
-Queries that require additional data such as the `findInvoicesByStatus` query can be passed as parameters:
+Queries that require additional data such as the `invoicesByStatus` query can be passed as parameters:
 
 Query:
 
-    {findInvoicesByStatus(status: "DRAFT"){id status client{id name addressLine1 city postCode}}}
+    {invoicesByStatus(status: "DRAFT"){id status client{id name addressLine1 city postCode}}}
 
 Result:
 
     {
       "data": {
-        "findInvoicesByStatus": [
+        "invoicesByStatus": [
           {
             "id": "3",
             "status": "DRAFT",
@@ -290,9 +292,9 @@ Result:
 All of the above queries can be sent to the service via the url.  They need to be URLEncoded for them to work properly.  For example:
 
     http://localhost:8080/graphql?query=%7BcountClients%7D
-    http://localhost:8080/graphql?query=%7BfindAllClients%7Bid%20name%20paymentTerms%7D%7D
-    http://localhost:8080/graphql?query=%7BfindAllInvoices%7Bid%20status%20client%7Bid%20name%20addressLine1%20city%20postCode%7D%7D%7D
-    http://localhost:8080/graphql?query=%7BfindInvoicesByStatus(status%3A%20%22DRAFT%22)%7Bid%20status%20client%7Bid%20name%20addressLine1%20city%20postCode%7D%7D%7D
+    http://localhost:8080/graphql?query=%7Bclients%7Bid%20name%20paymentTerms%7D%7D
+    http://localhost:8080/graphql?query=%7Binvoices%7Bid%20status%20client%7Bid%20name%20addressLine1%20city%20postCode%7D%7D%7D
+    http://localhost:8080/graphql?query=%7BinvoicesByStatus(status%3A%20%22DRAFT%22)%7Bid%20status%20client%7Bid%20name%20addressLine1%20city%20postCode%7D%7D%7D
     
 ### GraphiQL
 
