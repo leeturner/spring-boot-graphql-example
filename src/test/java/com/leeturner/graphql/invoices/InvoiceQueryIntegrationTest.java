@@ -57,7 +57,8 @@ class InvoiceQueryIntegrationTest {
     void testInvoiceCountReturnsTheCorrectNumberOfInvoices() throws IOException {
         GraphQLResponse response  = this.graphQLTestTemplate.postForResource("/graphql/invoices/query/invoiceCount.graphql");
         assertThat(response.isOk()).isTrue();
-        assertThat(response.get("$.data.invoiceCount")).isEqualTo("3");
+        JsonNode rootNode = response.readTree();
+        assertThat(rootNode.path("data").path("invoiceCount").asInt()).isEqualTo(3);
     }
 
     @Test

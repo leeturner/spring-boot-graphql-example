@@ -10,5 +10,5 @@ type Client {
 
 type Query {
     clients: [Client]!
-    clientCount: String
+    clientCount: Int!
 }

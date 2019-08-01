@@ -13,5 +13,5 @@ extend type Query {
     invoices: [Invoice]
     invoice(id: Int!): Invoice
     invoicesByStatus(status: String): [Invoice]
-    invoiceCount: String
+    invoiceCount: Int!
 }
