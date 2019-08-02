@@ -74,6 +74,7 @@
       <groupId>com.graphql-java</groupId>
       <artifactId>graphql-spring-boot-starter-test</artifactId>
       <version>5.0.2</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
