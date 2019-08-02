@@ -1,10 +1,5 @@
 package com.leeturner.graphql.invoices;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.IOException;
-import java.util.List;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.graphql.spring.boot.test.GraphQLResponse;
 import com.graphql.spring.boot.test.GraphQLTestTemplate;
@@ -19,6 +14,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.io.IOException;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -67,6 +67,14 @@ class InvoiceQueryIntegrationTest {
         assertThat(response.isOk()).isTrue();
         JsonNode rootNode = response.readTree();
         assertThat(rootNode.path("data").path("invoices").size()).isEqualTo(3);
+
+        JsonNode invoice1 = rootNode.path("data").path("invoices").path(0);
+        assertThat(invoice1.path("id").asInt()).isEqualTo(3);
+        assertThat(invoice1.path("gross").asDouble()).isEqualTo(120.00);
+        assertThat(invoice1.path("net").asDouble()).isEqualTo(100.00);
+        assertThat(invoice1.path("vat").asDouble()).isEqualTo(20.00);
+        assertThat(invoice1.path("status").asText()).isEqualTo("DRAFT");
+        assertThat(invoice1.path("currency").asText()).isEqualTo("GBP");
     }
 
 }
