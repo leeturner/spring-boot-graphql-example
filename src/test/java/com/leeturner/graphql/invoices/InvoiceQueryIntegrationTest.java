@@ -36,12 +36,12 @@ class InvoiceQueryIntegrationTest {
     @BeforeEach
     void seedDatabase() {
         // seed the database with some example data so we can have a play with the GraphQL queries
-        Client bobsMarketingAgency = new Client("Bobs Marketing Agency", 28, "23 Brighton Street", "Rottingdean", "Brighton", "BN2 7DP");
-        Invoice bobsInvoice1 = new Invoice("DRAFT", null, "GBP", 120.00, 100.00, 20.00, bobsMarketingAgency);
-        Invoice bobsInvoice2 = new Invoice("ISSUED", "2019-07-28", "GBP", 1200.00, 1000.00, 200.0, bobsMarketingAgency);
+        Client bobsMarketingAgency = new Client(null, "Bobs Marketing Agency", 28, "23 Brighton Street", "Rottingdean", "Brighton", "BN2 7DP");
+        Invoice bobsInvoice1 = new Invoice(null, "DRAFT", null, "GBP", 120.00, 100.00, 20.00, bobsMarketingAgency);
+        Invoice bobsInvoice2 = new Invoice(null, "ISSUED", "2019-07-28", "GBP", 1200.00, 1000.00, 200.0, bobsMarketingAgency);
 
-        Client jillsAccountancyCompany = new Client("Jills Accountancy Company", 28, "24 Eastbourne Rd", null, "Eastboaurne", "BN23 5GP");
-        Invoice jillsInvoice1 = new Invoice("DRAFT", null, "GBP", 120.00, 100.00, 20.00, jillsAccountancyCompany);
+        Client jillsAccountancyCompany = new Client(null, "Jills Accountancy Company", 28, "24 Eastbourne Rd", null, "Eastboaurne", "BN23 5GP");
+        Invoice jillsInvoice1 = new Invoice(null, "DRAFT", null, "GBP", 120.00, 100.00, 20.00, jillsAccountancyCompany);
 
         this.clientRepository.saveAll(List.of(bobsMarketingAgency,jillsAccountancyCompany));
         this.invoiceRepository.saveAll(List.of(bobsInvoice1, bobsInvoice2, jillsInvoice1));
