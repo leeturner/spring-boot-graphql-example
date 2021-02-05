@@ -5,8 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Entity
 public class Client {
@@ -103,32 +104,29 @@ public class Client {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
+
         Client client = (Client) o;
-        return getPaymentTerms() == client.getPaymentTerms() &&
-            Objects.equal(getId(), client.getId()) &&
-            Objects.equal(getName(), client.getName()) &&
-            Objects.equal(getAddressLine1(), client.getAddressLine1()) &&
-            Objects.equal(getAddressLine2(), client.getAddressLine2()) &&
-            Objects.equal(getCity(), client.getCity()) &&
-            Objects.equal(getPostCode(), client.getPostCode());
+
+        return new EqualsBuilder().append(getPaymentTerms(), client.getPaymentTerms()).append(getId(), client.getId()).append(getName(), client.getName()).append(getAddressLine1(), client.getAddressLine1()).append(getAddressLine2(), client.getAddressLine2()).append(getCity(), client.getCity()).append(getPostCode(), client.getPostCode()).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId(), getName(), getPaymentTerms(), getAddressLine1(), getAddressLine2(), getCity(), getPostCode());
+        return new HashCodeBuilder(17, 37).append(getId()).append(getName()).append(getPaymentTerms()).append(getAddressLine1()).append(getAddressLine2()).append(getCity()).append(getPostCode()).toHashCode();
     }
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-            .add("id", id)
-            .add("name", name)
-            .add("paymentTerms", paymentTerms)
-            .add("addressLine1", addressLine1)
-            .add("addressLine2", addressLine2)
-            .add("city", city)
-            .add("postCode", postCode)
+        return new ToStringBuilder(this)
+            .append("id", id)
+            .append("name", name)
+            .append("paymentTerms", paymentTerms)
+            .append("addressLine1", addressLine1)
+            .append("addressLine2", addressLine2)
+            .append("city", city)
+            .append("postCode", postCode)
             .toString();
     }
 }
