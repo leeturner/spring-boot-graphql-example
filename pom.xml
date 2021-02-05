@@ -19,18 +19,19 @@
   <properties>
     <java.version>15</java.version>
     <kotlin.version>1.4.21</kotlin.version>
+    <com.graphql-java-kickstart.version>7.0.1</com.graphql-java-kickstart.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>com.graphql-java-kickstart</groupId>
       <artifactId>graphql-spring-boot-starter</artifactId>
-      <version>5.10.0</version>
+      <version>${com.graphql-java-kickstart.version}</version>
     </dependency>
     <dependency>
       <groupId>com.graphql-java-kickstart</groupId>
       <artifactId>graphiql-spring-boot-starter</artifactId>
-      <version>5.10.0</version>
+      <version>${com.graphql-java-kickstart.version}</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
@@ -58,9 +59,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.graphql-java</groupId>
+      <groupId>com.graphql-java-kickstart</groupId>
       <artifactId>graphql-spring-boot-starter-test</artifactId>
-      <version>5.0.2</version>
+      <version>${com.graphql-java-kickstart.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

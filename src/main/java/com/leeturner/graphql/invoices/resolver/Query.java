@@ -2,11 +2,11 @@ package com.leeturner.graphql.invoices.resolver;
 
 import java.util.Optional;
 
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.leeturner.graphql.invoices.model.Client;
 import com.leeturner.graphql.invoices.model.Invoice;
 import com.leeturner.graphql.invoices.repository.ClientRepository;
 import com.leeturner.graphql.invoices.repository.InvoiceRepository;
+import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.stereotype.Component;
 
 @Component

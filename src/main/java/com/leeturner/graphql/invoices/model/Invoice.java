@@ -7,8 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Entity
 public class Invoice {
@@ -92,28 +93,30 @@ public class Invoice {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
+
         Invoice invoice = (Invoice) o;
-        return Objects.equal(getId(), invoice.getId()) &&
-            Objects.equal(getStatus(), invoice.getStatus()) &&
-            Objects.equal(getIssuedDate(), invoice.getIssuedDate()) &&
-            Objects.equal(getCurrency(), invoice.getCurrency()) &&
-            Objects.equal(getClient(), invoice.getClient());
+
+        return new EqualsBuilder().append(getId(), invoice.getId()).append(getStatus(), invoice.getStatus()).append(getIssuedDate(), invoice.getIssuedDate()).append(getCurrency(), invoice.getCurrency()).append(gross, invoice.gross).append(net, invoice.net).append(vat, invoice.vat).append(getClient(), invoice.getClient()).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId(), getStatus(), getIssuedDate(), getCurrency(), getClient());
+        return new HashCodeBuilder(17, 37).append(getId()).append(getStatus()).append(getIssuedDate()).append(getCurrency()).append(gross).append(net).append(vat).append(getClient()).toHashCode();
     }
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-            .add("id", id)
-            .add("status", status)
-            .add("issuedDate", issuedDate)
-            .add("currency", currency)
-            .add("client", client)
+        return new ToStringBuilder(this)
+            .append("id", id)
+            .append("status", status)
+            .append("issuedDate", issuedDate)
+            .append("currency", currency)
+            .append("gross", gross)
+            .append("net", net)
+            .append("vat", vat)
+            .append("client", client)
             .toString();
     }
 }
