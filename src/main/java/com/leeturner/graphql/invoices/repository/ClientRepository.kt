@@ -1,7 +1,6 @@
-package com.leeturner.graphql.invoices.repository;
+package com.leeturner.graphql.invoices.repository
 
-import com.leeturner.graphql.invoices.model.Client;
-import org.springframework.data.repository.CrudRepository;
+import com.leeturner.graphql.invoices.model.Client
+import org.springframework.data.repository.CrudRepository
 
-public interface ClientRepository extends CrudRepository<Client, Long> {
-}
+interface ClientRepository : CrudRepository<Client, Long>

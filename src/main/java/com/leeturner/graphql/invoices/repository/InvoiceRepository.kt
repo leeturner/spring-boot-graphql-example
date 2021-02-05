@@ -1,8 +1,8 @@
-package com.leeturner.graphql.invoices.repository;
+package com.leeturner.graphql.invoices.repository
 
-import com.leeturner.graphql.invoices.model.Invoice;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.CrudRepository
+import com.leeturner.graphql.invoices.model.Invoice
 
-public interface InvoiceRepository extends CrudRepository<Invoice, Long> {
-    Iterable<Invoice> findByStatus(String status);
+interface InvoiceRepository : CrudRepository<Invoice, Long> {
+    fun findByStatus(status: String): Iterable<Invoice>?
 }
