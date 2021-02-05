@@ -1,13 +1,11 @@
-package com.leeturner.graphql.invoices;
+package com.leeturner.graphql.invoices
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
 
 @SpringBootApplication
-public class InvoicesApplication {
+class InvoicesApplication
 
-    public static void main(String[] args) {
-        SpringApplication.run(InvoicesApplication.class, args);
-    }
-
+fun main(args: Array<String>) {
+    runApplication<InvoicesApplication>(*args)
 }

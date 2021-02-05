@@ -1,13 +1,11 @@
-package com.leeturner.graphql.invoices.config;
+package com.leeturner.graphql.invoices.config
 
-import com.leeturner.graphql.invoices.repository.ClientRepository;
-import com.leeturner.graphql.invoices.resolver.InvoiceResolver;
-import org.springframework.context.annotation.Bean;
+import com.leeturner.graphql.invoices.repository.ClientRepository
+import com.leeturner.graphql.invoices.resolver.InvoiceResolver
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 
-public class AppConfig {
-
+class AppConfig {
     @Bean
-    public InvoiceResolver clientResolver(ClientRepository clientRepository) {
-        return new InvoiceResolver(clientRepository);
-    }
+    fun clientResolver(clientRepository: ClientRepository) = InvoiceResolver(clientRepository)
 }
