@@ -1,50 +1,41 @@
-package com.leeturner.graphql.invoices.resolver;
+package com.leeturner.graphql.invoices.resolver
 
-import java.util.Optional;
-
-import com.leeturner.graphql.invoices.model.Client;
-import com.leeturner.graphql.invoices.model.Invoice;
-import com.leeturner.graphql.invoices.repository.ClientRepository;
-import com.leeturner.graphql.invoices.repository.InvoiceRepository;
-import graphql.kickstart.tools.GraphQLQueryResolver;
-import org.springframework.stereotype.Component;
+import com.leeturner.graphql.invoices.model.Client
+import com.leeturner.graphql.invoices.model.Invoice
+import com.leeturner.graphql.invoices.repository.ClientRepository
+import com.leeturner.graphql.invoices.repository.InvoiceRepository
+import graphql.kickstart.tools.GraphQLQueryResolver
+import org.springframework.stereotype.Component
+import java.util.*
 
 @Component
-public class Query implements GraphQLQueryResolver {
+class Query(val invoiceRepository: InvoiceRepository, val clientRepository: ClientRepository) : GraphQLQueryResolver {
 
-    private InvoiceRepository invoiceRepository;
-    private ClientRepository clientRepository;
-
-    public Query(InvoiceRepository invoiceRepository, ClientRepository clientRepository) {
-        this.invoiceRepository = invoiceRepository;
-        this.clientRepository = clientRepository;
+    fun invoice(id: Long): Optional<Invoice> {
+        return invoiceRepository.findById(id)
     }
 
-    public Optional<Invoice> invoice(Long id) {
-        return this.invoiceRepository.findById(id);
+    fun invoices(): Iterable<Invoice> {
+        return invoiceRepository.findAll()
     }
 
-    public Iterable<Invoice> invoices() {
-        return this.invoiceRepository.findAll();
+    fun invoicesByStatus(status: String): Iterable<Invoice>? {
+        return invoiceRepository.findByStatus(status)
     }
 
-    public Iterable<Invoice> invoicesByStatus(String status) {
-        return this.invoiceRepository.findByStatus(status);
+    fun invoiceCount(): Long {
+        return invoiceRepository.count()
     }
 
-    public long invoiceCount() {
-        return this.invoiceRepository.count();
+    fun client(id: Long): Optional<Client> {
+        return clientRepository.findById(id)
     }
 
-    public Optional<Client> client(Long id) {
-        return this.clientRepository.findById(id);
+    fun clients(): Iterable<Client> {
+        return clientRepository.findAll()
     }
 
-    public Iterable<Client> clients() {
-        return this.clientRepository.findAll();
-    }
-
-    public long clientCount() {
-        return this.clientRepository.count();
+    fun clientCount(): Long {
+        return clientRepository.count()
     }
 }
