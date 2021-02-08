@@ -27,7 +27,6 @@ GraphQL is enabled via adding the starter dependency from `com.graphql-java-kick
     <dependency>
       <groupId>com.graphql-java-kickstart</groupId>
       <artifactId>graphql-spring-boot-starter</artifactId>
-      <version>5.10.0</version>
     </dependency>
     
 This enables the GraphQL servlet on the default location - `/graphql`.  In this example we use the GraphQL schema language to build the `graphql-java` schema.  These files are stored in the `/resources/graphql/`:
