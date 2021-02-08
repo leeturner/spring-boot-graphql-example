@@ -71,7 +71,7 @@ invoice.graphqls:
 
 ## Usage
 
-Pull down the repo and build in the usual way.  This is a Java 12 project so make sure you are using the correct version of the jdk either on the command line or within your IDE.
+Pull down the repo and build in the usual way.  This is a Java 15 project so make sure you are using the correct version of the jdk either on the command line or within your IDE.
 
 Once the service is up and running you can query the data using the queries defined in the `.graphqls` files.  Below are some example queries based on the queries we have defined:
 
