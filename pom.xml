@@ -19,7 +19,7 @@
   <properties>
     <java.version>16</java.version>
     <kotlin.version>1.5.10</kotlin.version>
-    <com.graphql-java-kickstart.version>11.1.0</com.graphql-java-kickstart.version>
+    <com.graphql-java-kickstart.version>12.0.0</com.graphql-java-kickstart.version>
   </properties>
 
   <dependencies>
