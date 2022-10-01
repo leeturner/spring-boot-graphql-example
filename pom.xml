@@ -19,10 +19,18 @@
   <properties>
     <java.version>17</java.version>
     <kotlin.version>1.7.10</kotlin.version>
+    <snakeyaml.version>1.33</snakeyaml.version>
     <com.graphql-java-kickstart.version>14.0.0</com.graphql-java-kickstart.version>
   </properties>
 
   <dependencies>
+    <!-- override this from the default in spring boot due to https://security.snyk.io/vuln/SNYK-JAVA-ORGYAML-3016891 -->
+    <dependency>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+      <version>${snakeyaml.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>com.graphql-java-kickstart</groupId>
       <artifactId>graphql-spring-boot-starter</artifactId>
