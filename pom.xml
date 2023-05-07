@@ -20,7 +20,7 @@
     <java.version>17</java.version>
     <kotlin.version>1.7.10</kotlin.version>
     <snakeyaml.version>1.33</snakeyaml.version>
-    <com.graphql-java-kickstart.version>14.0.0</com.graphql-java-kickstart.version>
+    <com.graphql-java-kickstart.version>15.0.0</com.graphql-java-kickstart.version>
   </properties>
 
   <dependencies>
